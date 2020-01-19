@@ -1,1 +1,1 @@
-# wantBeer
+# Want Beer
