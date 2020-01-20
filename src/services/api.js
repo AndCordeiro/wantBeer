@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseURL = 'https://api.code-challenge.ze.delivery/public/graphql';
+export const baseURL = 'https://api.code-challenge.ze.delivery';
 
 const headers = {
     "content-type": "application/json"
