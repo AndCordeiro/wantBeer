@@ -110,7 +110,7 @@ class Home extends Component {
                 <Text style={styles.title}>
                     {informations.tradingName} - {informations.status}
                 </Text>
-                <Text>
+                <Text style={{ alignItems: 'center' }}>
                     <Text style={styles.label}>
                         Address: {'\t'}
                     </Text>
