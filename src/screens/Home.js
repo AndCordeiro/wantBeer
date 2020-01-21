@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native';
 import {
     connect
@@ -91,7 +92,14 @@ class Home extends Component {
             );
         }
         if (!informations) {
-            return;
+            return (
+                <View style={[styles.body, { backgroundColor: global.COLOR_THIRD, justifyContent: 'center' }]}>
+                    <Image
+                        style={{ width: 200, height: 200 }}
+                        source={require('../imgs/icon.png')}
+                    />
+                </View>
+            );
         }
         return (
             <View style={styles.body}>

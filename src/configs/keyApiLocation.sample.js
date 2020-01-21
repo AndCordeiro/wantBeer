@@ -1,2 +1,2 @@
 // API GOOGLE KEY
-global.GOOGLE_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+global.GOOGLE_KEY = "xxx";
