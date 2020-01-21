@@ -12,6 +12,10 @@ Application for products delivery
 
 ## Get started
 
+- git clone this repository
+- change file ```./src/configs/keyApiLocation.sample.js``` to ```./src/configs/keyApiLocation.js```
+- change variable value ```global.GOOGLE_KEY``` with api google key
+
 ### Production release
 - yarn build
 

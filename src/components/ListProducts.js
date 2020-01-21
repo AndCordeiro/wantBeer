@@ -183,7 +183,7 @@ ListProducts.defaultProps = {
         elevation: 2,
         backgroundColor: global.COLOR_SECOND,
         height: 40,
-        width: 55,
+        width: (width / 7.5),
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center'
