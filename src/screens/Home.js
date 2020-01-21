@@ -98,6 +98,9 @@ class Home extends Component {
                         style={{ width: 200, height: 200 }}
                         source={require('../imgs/icon.png')}
                     />
+                    <Text>
+                        {global.GOOGLE_KEY}
+                    </Text>
                 </View>
             );
         }
@@ -161,7 +164,8 @@ const styles = StyleSheet.create({
     header: {
         width,
         backgroundColor: global.COLOR_SECOND,
-        padding: 20
+        padding: 20,
+        zIndex: 1
     },
     inputAddress: {
         backgroundColor: global.COLOR_THIRD,
@@ -181,9 +185,11 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
+        textAlign: 'center'
     },
     informations: {
-        fontSize: 16
+        fontSize: 16,
+        textAlign: 'center'
     }
 });
