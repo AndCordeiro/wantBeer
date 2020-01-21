@@ -17,6 +17,7 @@
     "prop-types": "^15.7.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-device-info": "^5.4.1",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-picker-select": "^6.3.4",
     "react-native-safe-area-context": "^0.6.2",

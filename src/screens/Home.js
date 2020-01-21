@@ -30,6 +30,7 @@ import {
     Button,
     Loading
 } from '../components';
+import DeviceInfo from 'react-native-device-info';
 
 const {
     width
@@ -133,6 +134,19 @@ class Home extends Component {
         )
     }
 
+    renderFooter = () => {
+        return (
+            <Text style={{
+                width, backgroundColor: (this.props.informations.message || this.props.informations.informations) ? global.COLOR_MAIN : global.COLOR_THIRD,
+                fontWeight: 'bold',
+                color: global.COLOR_SECOND,
+                textAlign: 'center'
+            }}>
+                WB Version {DeviceInfo.getVersion()}
+            </Text>
+        );
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -141,6 +155,7 @@ class Home extends Component {
                 />
                 {this.renderInputAddress()}
                 {this.renderInformations()}
+                {this.renderFooter()}
             </SafeAreaView>
         );
     }
