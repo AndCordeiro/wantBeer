@@ -99,9 +99,6 @@ class Home extends Component {
                         style={{ width: 200, height: 200 }}
                         source={require('../imgs/icon.png')}
                     />
-                    <Text>
-                        {global.GOOGLE_KEY}
-                    </Text>
                 </View>
             );
         }
