@@ -1,7 +1,9 @@
 import api from '../services/api';
+import {
+    CATEGORIES
+} from './types';
 
-
-export const getCategories = () => new Promise((resolve, reject) => {
+export const getCategories = () => (dispatch) => {
     api.post(`/public/graphql`, {
         query: `
             query allCategoriesSearch {
@@ -14,11 +16,13 @@ export const getCategories = () => new Promise((resolve, reject) => {
     })
         .then((response) => response.data)
         .then((data) => {
-            if (data.data) {
-                resolve(data.data);
-            } else {
-                reject(new Error(data.errors[0]));
+            let { allCategory } = data.data;
+            if (allCategory) {
+                dispatch({
+                    type: CATEGORIES,
+                    payload: allCategory
+                });
             }
         })
-        .catch(reject);
-});
+        .catch();
+};

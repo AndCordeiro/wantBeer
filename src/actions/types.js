@@ -1,2 +1,4 @@
-export const ADD_PRODUCTS = 'add_products';
-export const ADD_CATEGORIES = 'add_categories';
+export const PRODUCTS = 'products';
+export const CATEGORIES = 'categories';
+export const LOCATION = 'location';
+export const INFORMATIONS = 'informations';

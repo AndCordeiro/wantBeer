@@ -1,7 +1,19 @@
 import api from '../services/api';
+import {
+	INFORMATIONS,
+	PRODUCTS
+} from './types';
+import moment from 'moment';
 
 
-export const getPocsSearch = () => new Promise((resolve, reject) => {
+export const getPocsSearch = (lat, long) => (dispatch) => new Promise((resolve, reject) => {
+	dispatch({
+		type: INFORMATIONS,
+		payload: {
+			message: null,
+			loading: true
+		}
+	});
 	api.post(`/public/graphql`, {
 		query: `
 			query pocSearchMethod($now: DateTime!, $algorithm: String!, $lat: String!, $long: String!) {
@@ -57,24 +69,53 @@ export const getPocsSearch = () => new Promise((resolve, reject) => {
 		`,
 		variables: {
 			"algorithm": "NEAREST",
-			"lat": "-23.632919",
-			"long": "-46.699453",
-			"now": "2017-08-01T20:00:00.000Z"
+			lat,
+			long,
+			"now": moment().format("YYYY-MM-DD HH:mm:ss")
 		}
 	})
 		.then((response) => response.data)
-		.then((data) => {
-			console.log(data)
-			if (data.data) {
-				resolve(data.data);
+		.then((response) => response.data)
+		.then((response) => response.pocSearch)
+		.then(([data]) => {
+			let informations = null;
+			let message = null;
+			if (data) {
+				informations = data;
 			} else {
-				reject(new Error(data.errors[0]));
+				message = "Owwwnnn, it's outside our area!";
 			}
+			dispatch({
+				type: INFORMATIONS,
+				payload: {
+					informations,
+					message,
+					loading: false
+				}
+			});
+			resolve();
 		})
-		.catch(reject);
+		.catch((error) => {
+			dispatch({
+				type: INFORMATIONS,
+				payload: {
+					informations,
+					message: error.message,
+					loading: false
+				}
+			});
+			reject();
+		});
 });
 
-export const getPoc = () => new Promise((resolve, reject) => {
+export const getPoc = (id, categoryId = null) => (dispatch) => new Promise((resolve, reject) => {
+	dispatch({
+		type: PRODUCTS,
+		payload: {
+			poc: { id, products: [] },
+			loading: true
+		}
+	});
 	api.post(`/public/graphql`, {
 		query: `
 			query poc($id: ID!, $categoryId: Int, $search: String){
@@ -115,17 +156,32 @@ export const getPoc = () => new Promise((resolve, reject) => {
 			}
       	`,
 		variables: {
-			"id": "532",
+			id,
 			"search": "",
-			"categoryId": null
+			"categoryId": categoryId != null ? parseInt(categoryId) : categoryId
 		}
 	})
 		.then((response) => response.data)
-		.then((data) => {
-			if (data.data) {
-				resolve(data.data);
+		.then((response) => response.data)
+		.then(({ poc }) => {
+			if (poc) {
+				dispatch({
+					type: PRODUCTS,
+					payload: {
+						poc,
+						loading: false
+					}
+				});
+				resolve();
 			} else {
-				reject(new Error(data.errors[0]));
+				dispatch({
+					type: PRODUCTS,
+					payload: {
+						poc: { id, products: [] },
+						loading: false
+					}
+				});
+				reject();
 			}
 		})
 		.catch(reject);

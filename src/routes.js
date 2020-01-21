@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 
 import HomeScreen from './screens/Home';
-import ProductScreen from './screens/Product';
+import ProductsScreen from './screens/Products';
 
 const headerDefault = (title, headerTintColor, backgroundColor) => ({
     title,
-    headerTintColor: (headerTintColor) ? headerTintColor : '#FFC500',
+    headerTintColor: (headerTintColor) ? headerTintColor : global.COLOR_MAIN,
     headerStyle: {
         backgroundColor: (backgroundColor) ? backgroundColor : global.COLOR_MAIN
     }
@@ -22,11 +22,11 @@ const headerDefault = (title, headerTintColor, backgroundColor) => ({
 const AppStack = createStackNavigator({
     home: {
         screen: HomeScreen,
-        navigationOptions: () => (headerDefault('Want Beer', '#000', '#FFC500'))
+        navigationOptions: () => (headerDefault('Want Beer', global.COLOR_SECOND, global.COLOR_MAIN))
     },
     product: {
-        screen: ProductScreen,
-        navigationOptions: () => (headerDefault('Product', '#000', '#FFC500'))
+        screen: ProductsScreen,
+        navigationOptions: () => (headerDefault('Products', global.COLOR_SECOND, global.COLOR_MAIN))
     }
 });
 

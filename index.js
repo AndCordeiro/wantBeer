@@ -1,3 +1,5 @@
+import './src/configs/keyApiLocation';
+import './src/configs/constants';
 import { AppRegistry, YellowBox } from 'react-native';
 import App from './src/App';
 import { name as appName } from './app.json';

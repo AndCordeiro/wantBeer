@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 
-import product from './product';
-import category from './category';
+import products from './products';
+import categories from './categories';
+import location from './location';
+import informations from './informations';
 
 const rootReducer = combineReducers({
-    product,
-    category
+    products,
+    categories,
+    location,
+    informations
 });
 
 export default rootReducer;
