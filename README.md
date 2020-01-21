@@ -35,4 +35,4 @@ Application for products delivery
 - react-native-picker-select
 
 ## Bitrise
-[APK Android release](https://app.bitrise.io/artifact/29577742/p/2bb34a62fef8bbc3574f021a8e1784b9)
+<a href="https://app.bitrise.io/artifact/29577742/p/2bb34a62fef8bbc3574f021a8e1784b9" target="_blank" rel="noopener"><span>APK Android release</span> </a>
